@@ -1,6 +1,6 @@
 FROM python
 
-RUN adduser -D worker
+RUN adduser --system worker
 USER worker
 
 WORKDIR /home/worker
