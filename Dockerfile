@@ -1,6 +1,8 @@
 FROM python
 
-RUN adduser --system worker
+RUN addgroup --system --gid 112 i2c
+RUN adduser --system --ingroup i2c worker
+
 USER worker
 
 WORKDIR /home/worker
