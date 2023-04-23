@@ -11,3 +11,5 @@ RUN pip3 install -r /app/requirements.txt
 COPY *py /app/
 
 ENTRYPOINT ["/app/exporter.py"]
+
+EXPOSE 8000

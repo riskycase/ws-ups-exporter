@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from prometheus_client import start_http_server, Summary,Gauge
+from prometheus_client import start_http_server, Summary, Gauge
 from INA219 import INA219
 import time
 import random
@@ -28,3 +28,5 @@ def getPSUVoltage():
 if __name__ == '__main__':
     # Start up the server to expose the metrics.
     start_http_server(8000)
+    while True:
+        time.sleep(1)
