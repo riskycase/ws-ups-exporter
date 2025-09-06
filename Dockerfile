@@ -1,6 +1,10 @@
 # Stage 1: Build dependencies
 FROM python:alpine AS builder
 
+LABEL org.opencontainers.image.source=https://github.com/riskycase/ws-ups-exporter
+LABEL org.opencontainers.image.description="Waveshare UPS HAT (D) Prometheus server"
+LABEL org.opencontainers.image.licenses=GPL-3.0-only
+
 # Install build dependencies
 RUN apk add --no-cache \
     make \
@@ -22,7 +26,8 @@ FROM python:alpine
 
 # Install only runtime dependencies
 RUN apk add --no-cache \
-    i2c-tools
+    i2c-tools \
+    shadow
 
 # Create user without specific GID - we'll handle groups at runtime
 RUN adduser --system worker
