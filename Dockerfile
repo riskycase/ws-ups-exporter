@@ -1,5 +1,5 @@
 # Stage 1: Build dependencies
-FROM python:alpine as builder
+FROM python:alpine AS builder
 
 # Install build dependencies
 RUN apk add --no-cache \
@@ -24,9 +24,8 @@ FROM python:alpine
 RUN apk add --no-cache \
     i2c-tools
 
-# Create i2c group and user
-RUN addgroup --system --gid 112 i2c && \
-    adduser --system --ingroup i2c worker
+# Create user without specific GID - we'll handle groups at runtime
+RUN adduser --system worker
 
 WORKDIR /home/worker
 
@@ -45,4 +44,7 @@ USER worker
 
 # Container configuration
 EXPOSE 8000
-ENTRYPOINT ["python3", "/home/worker/exporter.py"]
+ENTRYPOINT ["/entrypoint.sh"]
+
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD python3 -c "import smbus; smbus.SMBus(1)" || exit 1
