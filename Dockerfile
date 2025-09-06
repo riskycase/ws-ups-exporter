@@ -39,15 +39,14 @@ COPY *py /home/worker/
 # Set proper ownership
 RUN chown -R worker /home/worker
 
-# Create an entrypoint script to handle group setup at runtime
+# Create an entrypoint script
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Switch to non-root user
-USER worker
-
-# Container configuration
 EXPOSE 8000
+
+# Don't switch to worker user in Dockerfile
+# Let the entrypoint handle it
 ENTRYPOINT ["/entrypoint.sh"]
 
 HEALTHCHECK --interval=30s --timeout=3s \
