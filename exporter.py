@@ -5,7 +5,7 @@ from INA219 import INA219
 import time
 import random
 
-ina=INA219(addr=0x42)
+ina=INA219(i2c_bus=1,addr=0x43)
 
 busVoltage = Gauge('bus_voltage_v', 'Load Voltage')
 busVoltage.set_function(lambda: ina.getBusVoltage_V())
