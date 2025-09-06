@@ -50,7 +50,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          platforms: linux/arm32v7,linux/arm64v8
+          platforms: linux/arm/v7,linux/arm64/v8
           context: .
           file: Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
