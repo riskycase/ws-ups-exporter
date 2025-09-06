@@ -37,10 +37,14 @@ RUN pip install --no-cache /wheels/*
 COPY *py /home/worker/
 
 # Set proper ownership
-RUN chown -R worker:i2c /home/worker
+RUN chown -R worker /home/worker
 
 # Switch to non-root user
 USER worker
+
+# Create an entrypoint script to handle group setup at runtime
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # Container configuration
 EXPOSE 8000
