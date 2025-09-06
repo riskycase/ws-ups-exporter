@@ -1,8 +1,8 @@
-# Waveshare UPS HAT Prometheus exporter
+# Waveshare UPS HAT (D) Prometheus exporter
 
-Made for [Waveshare UPS HAT](https://www.waveshare.com/wiki/UPS_HAT) monitoring
+Made for [Waveshare UPS HAT (D)](https://www.waveshare.com/ups-hat-d.htm) monitoring
 
-[Grfana dashboard](https://grafana.com/grafana/dashboards/18596-ups/)
+Adapted from [pastukhov/ws-ups-exporter](https://github.com/pastukhov/ws-ups-exporter)
 
 Inspired by [usvwatcher](https://github.com/wellenvogel/usvwatcher)
 
